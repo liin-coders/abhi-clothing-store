@@ -7,12 +7,18 @@
 
   /* ================= 03 CATALOG (12 categories x 12 products) ================= */
   const META = { // base price, sizes, singular name
-    'T-Shirts': [499, 'S M L XL', 'T-Shirt'], 'Polo Shirts': [799, 'S M L XL XXL', 'Polo Shirt'],
-    'Jackets': [2199, 'M L XL', 'Jacket'], 'Overcoats': [4499, 'M L XL', 'Overcoat'],
-    'Denim': [1299, '30 32 34 36', 'Denim Jeans'], 'Trousers': [1199, '30 32 34 36', 'Trouser'],
-    'Chinos': [999, '30 32 34 36', 'Chino'], 'Joggers': [799, 'S M L XL', 'Jogger'],
-    'Suits': [5999, '38 40 42 44', 'Suit'], 'Blazers': [3499, '38 40 42 44', 'Blazer'],
-    'Formal Shirts': [999, 'S M L XL', 'Formal Shirt'], 'Tuxedos': [6999, '38 40 42 44', 'Tuxedo']
+    'T-Shirts': [499, 'S M L XL', 'T-Shirt'],
+     'Polo Shirts': [799, 'S M L XL XXL', 'Polo Shirt'],
+    'Jackets': [2199, 'M L XL', 'Jacket'], 
+    'Overcoats': [4499, 'M L XL', 'Overcoat'],
+    // 'Denim': [1299, '30 32 34 36', 'Denim Jeans'], 
+    // 'Trousers': [1199, '30 32 34 36', 'Trouser'],
+    // 'Chinos': [999, '30 32 34 36', 'Chino'],
+    //  'Joggers': [799, 'S M L XL', 'Jogger'],
+    // 'Suits': [5999, '38 40 42 44', 'Suit'],
+    //  'Blazers': [3499, '38 40 42 44', 'Blazer'],
+    // 'Formal Shirts': [999, 'S M L XL', 'Formal Shirt'], 
+    // 'Tuxedos': [6999, '38 40 42 44', 'Tuxedo']
   };
   const MOD = ['Classic', 'Essential', 'Signature', 'Heritage', 'Urban', 'Premium', 'Everyday', 'Modern', 'Relaxed', 'Tailored', 'Slim Fit', 'Studio'];
   const M = [.85, 1, 1.1, .95, 1.2, .9, 1.05, 1.15, .8, 1.25, 1, 1.1];
@@ -26,10 +32,12 @@
     MOD.forEach((m, i) => {
       const price = Math.round(base * M[i] / 10) * 10 - 1;
       const mrp = Math.round(price / (1 - D[i] / 100) / 10) * 10 - 1;
-      ALL.push({ s, cat: name, name: `${m} ${noun}`, price, mrp, sizes,
+      ALL.push({
+        s, cat: name, name: `${m} ${noun}`, price, mrp, sizes,
         f: IMG(pool[i % pool.length], 700, CR[i]),
         b: IMG(pool[(i + 1) % pool.length], 700, CR[(i + 5) % 12]),
-        fb: IMG(img, 700, CR[(i + 5) % 12]) });
+        fb: IMG(img, 700, CR[(i + 5) % 12])
+      });
     });
   }));
 
@@ -74,7 +82,7 @@
       shop.innerHTML = html || '<p class="empty">No products match your search. Try a different word or reset the filters.</p>';
       cnt.textContent = `Showing ${n} product${n === 1 ? '' : 's'}`;
     };
-    const setHash = v => { try { history.replaceState(null, '', v ? '#' + v : location.pathname + location.search); } catch (e) {} };
+    const setHash = v => { try { history.replaceState(null, '', v ? '#' + v : location.pathname + location.search); } catch (e) { } };
     const fromHash = () => { const h = location.hash.slice(1); fc.value = CATS.some(c => c.s === h) ? h : ''; apply(); };
     $('#qb').onclick = apply;
     q.addEventListener('input', apply);
@@ -90,31 +98,31 @@
 
   /* ================= 05 TESTIMONIALS (fade slider) ================= */
   if ($('#reviews')) {
-  const tm = $('#reviews');
-  const ts = $$('.tm-s', tm), td = $$('.tm-dots button', tm);
-  let ti = 0, tt, tlock = false;
-  const goT = i => {
-    ti = (i + ts.length) % ts.length;
-    ts.forEach((s, k) => s.classList.toggle('on', k === ti));
-    td.forEach((d, k) => d.classList.toggle('on', k === ti));
-  };
-  const playT = () => { clearInterval(tt); if (!matchMedia('(prefers-reduced-motion: reduce)').matches) tt = setInterval(() => goT(ti + 1), 6000); };
-  $('.tm-prev', tm).onclick = () => { goT(ti - 1); playT(); };
-  $('.tm-next', tm).onclick = () => { goT(ti + 1); playT(); };
-  td.forEach((d, k) => d.onclick = () => { goT(k); playT(); });
-  tm.addEventListener('mouseenter', () => clearInterval(tt));
-  tm.addEventListener('mouseleave', playT);
-  tm.addEventListener('wheel', e => {   // trackpad swipe
-    if (Math.abs(e.deltaX) < Math.abs(e.deltaY) || Math.abs(e.deltaX) < 25) return;
-    e.preventDefault();
-    if (tlock) return;
-    tlock = true; goT(ti + (e.deltaX > 0 ? 1 : -1)); playT();
-    setTimeout(() => tlock = false, 800);
-  }, { passive: false });
-  let tx = 0;
-  tm.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-  tm.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) { goT(ti + (dx < 0 ? 1 : -1)); playT(); } });
-  playT();
+    const tm = $('#reviews');
+    const ts = $$('.tm-s', tm), td = $$('.tm-dots button', tm);
+    let ti = 0, tt, tlock = false;
+    const goT = i => {
+      ti = (i + ts.length) % ts.length;
+      ts.forEach((s, k) => s.classList.toggle('on', k === ti));
+      td.forEach((d, k) => d.classList.toggle('on', k === ti));
+    };
+    const playT = () => { clearInterval(tt); if (!matchMedia('(prefers-reduced-motion: reduce)').matches) tt = setInterval(() => goT(ti + 1), 6000); };
+    $('.tm-prev', tm).onclick = () => { goT(ti - 1); playT(); };
+    $('.tm-next', tm).onclick = () => { goT(ti + 1); playT(); };
+    td.forEach((d, k) => d.onclick = () => { goT(k); playT(); });
+    tm.addEventListener('mouseenter', () => clearInterval(tt));
+    tm.addEventListener('mouseleave', playT);
+    tm.addEventListener('wheel', e => {   // trackpad swipe
+      if (Math.abs(e.deltaX) < Math.abs(e.deltaY) || Math.abs(e.deltaX) < 25) return;
+      e.preventDefault();
+      if (tlock) return;
+      tlock = true; goT(ti + (e.deltaX > 0 ? 1 : -1)); playT();
+      setTimeout(() => tlock = false, 800);
+    }, { passive: false });
+    let tx = 0;
+    tm.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+    tm.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) { goT(ti + (dx < 0 ? 1 : -1)); playT(); } });
+    playT();
 
   }
 
@@ -137,55 +145,55 @@
 
   /* ================= 06 CONTACT: form -> WhatsApp (nothing goes into the page URL) ================= */
   if ($('#cf')) {
-  const cf = $('#cf'), note = $('#note');
-  const field = n => cf.elements[n];
-  cf.addEventListener('submit', e => {
-    e.preventDefault();
-    const v = n => field(n).value.trim();
-    const bad = [];
-    if (v('n').length < 2) bad.push(['n', 'Please enter your name.']);
-    if (!/^[6-9]\d{9}$/.test(v('p'))) bad.push(['p', 'Please enter a valid 10-digit mobile number.']);
-    if (v('e') && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('e'))) bad.push(['e', 'That email does not look right.']);
-    if (!v('s')) bad.push(['s', 'Please select what you are looking for.']);
-    if (v('m').length < 5) bad.push(['m', 'Please write a short message.']);
-    $$('.f', cf).forEach(l => l.classList.remove('bad'));
-    if (bad.length) {
-      bad.forEach(([n]) => field(n).closest('.f').classList.add('bad'));
-      note.className = 'note err';
-      note.textContent = bad[0][1];
-      field(bad[0][0]).focus();
-      return;
-    }
-    const text = `*New enquiry - Abhi Clothing Store*\nName: ${v('n')}\nPhone: ${v('p')}\n` + (v('e') ? `Email: ${v('e')}\n` : '') + `Looking for: ${v('s')}\nMessage: ${v('m')}`;
-    window.open(`https://wa.me/${WA}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
-    note.className = 'note ok';
-    note.textContent = 'Opening WhatsApp. Press send there to reach us.';
-    cf.reset();
-  });
-  cf.addEventListener('reset', () => { $$('.f', cf).forEach(l => l.classList.remove('bad')); note.textContent = ''; note.className = 'note'; });
-  field('p').addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g, ''); });
+    const cf = $('#cf'), note = $('#note');
+    const field = n => cf.elements[n];
+    cf.addEventListener('submit', e => {
+      e.preventDefault();
+      const v = n => field(n).value.trim();
+      const bad = [];
+      if (v('n').length < 2) bad.push(['n', 'Please enter your name.']);
+      if (!/^[6-9]\d{9}$/.test(v('p'))) bad.push(['p', 'Please enter a valid 10-digit mobile number.']);
+      if (v('e') && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('e'))) bad.push(['e', 'That email does not look right.']);
+      if (!v('s')) bad.push(['s', 'Please select what you are looking for.']);
+      if (v('m').length < 5) bad.push(['m', 'Please write a short message.']);
+      $$('.f', cf).forEach(l => l.classList.remove('bad'));
+      if (bad.length) {
+        bad.forEach(([n]) => field(n).closest('.f').classList.add('bad'));
+        note.className = 'note err';
+        note.textContent = bad[0][1];
+        field(bad[0][0]).focus();
+        return;
+      }
+      const text = `*New enquiry - Abhi Clothing Store*\nName: ${v('n')}\nPhone: ${v('p')}\n` + (v('e') ? `Email: ${v('e')}\n` : '') + `Looking for: ${v('s')}\nMessage: ${v('m')}`;
+      window.open(`https://wa.me/${WA}?text=${encodeURIComponent(text)}`, '_blank', 'noopener');
+      note.className = 'note ok';
+      note.textContent = 'Opening WhatsApp. Press send there to reach us.';
+      cf.reset();
+    });
+    cf.addEventListener('reset', () => { $$('.f', cf).forEach(l => l.classList.remove('bad')); note.textContent = ''; note.className = 'note'; });
+    field('p').addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g, ''); });
 
   }
 
   /* ================= 07 FAQ ================= */
   if ($('.faq-q')) {
-  const FAQ = [
-    ['What are your store timings?', 'We are open every day from 8:00 AM to 9:00 PM. Walk in any time during these hours.'],
-    ['Do you offer custom tailoring?', 'Yes. Suits, shirts and trousers can be stitched to your measurements. Visit the store to choose a fabric and get measured.'],
-    ['How long does an alteration take?', 'Simple jobs like hemming are usually ready the same or next day. Bigger changes take a few days, and we confirm the date when you drop the item off.'],
-    ['Which payment methods do you accept?', 'Cash, UPI and the major debit and credit cards: Visa, Mastercard, RuPay and American Express.'],
-    ['Can I exchange a product?', 'Unworn items with tags and the bill can be exchanged for another size or style within 7 days. Tailored and altered items cannot be exchanged.'],
-    ['Do you handle wedding and bulk orders?', 'Yes. Share your date and requirements on WhatsApp and we will plan looks for the groom and the wedding party.']
-  ];
-  const fq = $('.faq-q'), fa = $('.faq-a');
-  fq.innerHTML = FAQ.map(([t], i) => `<button type="button" role="tab" aria-selected="${i === 0}" class="${i === 0 ? 'on' : ''}">${t}</button>`).join('');
-  const showQ = i => {
-    $$('button', fq).forEach((b, k) => { b.classList.toggle('on', k === i); b.setAttribute('aria-selected', k === i); });
-    fa.innerHTML = `<p>${FAQ[i][1]}</p>`;
-  };
-  fq.addEventListener('click', e => { const b = e.target.closest('button'); if (b) showQ($$('button', fq).indexOf(b)); });
-  fq.addEventListener('pointerover', e => { if (e.pointerType === 'mouse') { const b = e.target.closest('button'); if (b && !b.classList.contains('on')) showQ($$('button', fq).indexOf(b)); } });
-  showQ(0);
+    const FAQ = [
+      ['What are your store timings?', 'We are open every day from 8:00 AM to 9:00 PM. Walk in any time during these hours.'],
+      ['Do you offer custom tailoring?', 'Yes. Suits, shirts and trousers can be stitched to your measurements. Visit the store to choose a fabric and get measured.'],
+      ['How long does an alteration take?', 'Simple jobs like hemming are usually ready the same or next day. Bigger changes take a few days, and we confirm the date when you drop the item off.'],
+      ['Which payment methods do you accept?', 'Cash, UPI and the major debit and credit cards: Visa, Mastercard, RuPay and American Express.'],
+      ['Can I exchange a product?', 'Unworn items with tags and the bill can be exchanged for another size or style within 7 days. Tailored and altered items cannot be exchanged.'],
+      ['Do you handle wedding and bulk orders?', 'Yes. Share your date and requirements on WhatsApp and we will plan looks for the groom and the wedding party.']
+    ];
+    const fq = $('.faq-q'), fa = $('.faq-a');
+    fq.innerHTML = FAQ.map(([t], i) => `<button type="button" role="tab" aria-selected="${i === 0}" class="${i === 0 ? 'on' : ''}">${t}</button>`).join('');
+    const showQ = i => {
+      $$('button', fq).forEach((b, k) => { b.classList.toggle('on', k === i); b.setAttribute('aria-selected', k === i); });
+      fa.innerHTML = `<p>${FAQ[i][1]}</p>`;
+    };
+    fq.addEventListener('click', e => { const b = e.target.closest('button'); if (b) showQ($$('button', fq).indexOf(b)); });
+    fq.addEventListener('pointerover', e => { if (e.pointerType === 'mouse') { const b = e.target.closest('button'); if (b && !b.classList.contains('on')) showQ($$('button', fq).indexOf(b)); } });
+    showQ(0);
 
   }
 
