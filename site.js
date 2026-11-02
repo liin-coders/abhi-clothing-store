@@ -8,22 +8,46 @@
   /* ================= 03 CATALOG (12 categories x 12 products) ================= */
   const META = { // base price, sizes, singular name
     'T-Shirts': [499, 'S M L XL', 'T-Shirt'],
-     'Polo Shirts': [799, 'S M L XL XXL', 'Polo Shirt'],
-    'Jackets': [2199, 'M L XL', 'Jacket'], 
+    'Polo Shirts': [799, 'S M L XL XXL', 'Polo Shirt'],
+    'Jackets': [2199, 'M L XL', 'Jacket'],
     'Overcoats': [4499, 'M L XL', 'Overcoat'],
-    // 'Denim': [1299, '30 32 34 36', 'Denim Jeans'], 
-    // 'Trousers': [1199, '30 32 34 36', 'Trouser'],
-    // 'Chinos': [999, '30 32 34 36', 'Chino'],
-    //  'Joggers': [799, 'S M L XL', 'Jogger'],
-    // 'Suits': [5999, '38 40 42 44', 'Suit'],
-    //  'Blazers': [3499, '38 40 42 44', 'Blazer'],
-    // 'Formal Shirts': [999, 'S M L XL', 'Formal Shirt'], 
-    // 'Tuxedos': [6999, '38 40 42 44', 'Tuxedo']
+    'Denim': [1299, '30 32 34 36', 'Denim Jeans'],
+    'Trousers': [1199, '30 32 34 36', 'Trouser'],
+    'Chinos': [999, '30 32 34 36', 'Chino'],
+    'Joggers': [799, 'S M L XL', 'Jogger'],
+    'Suits': [5999, '38 40 42 44', 'Suit'],
+    'Blazers': [3499, '38 40 42 44', 'Blazer'],
+    'Formal Shirts': [999, 'S M L XL', 'Formal Shirt'],
+    'Tuxedos': [6999, '38 40 42 44', 'Tuxedo']
   };
-  const MOD = ['Classic', 'Essential', 'Signature', 'Heritage', 'Urban', 'Premium', 'Everyday', 'Modern', 'Relaxed', 'Tailored', 'Slim Fit', 'Studio'];
+  const MOD = ['Classic',
+    'Essential',
+    'Signature',
+    'Heritage',
+    'Urban',
+    'Premium',
+    'Everyday',
+    'Modern',
+    'Relaxed',
+    'Tailored',
+    'Slim Fit',
+    'Studio'];
+
   const M = [.85, 1, 1.1, .95, 1.2, .9, 1.05, 1.15, .8, 1.25, 1, 1.1];
   const D = [22, 30, 35, 25, 40, 28, 33, 45, 20, 38, 26, 32];
-  const CR = [[.5, .3, 1.2], [.3, .5, 1.4], [.7, .4, 1.3], [.5, .7, 1.5], [.4, .3, 1.6], [.6, .6, 1.3], [.5, .5, 1.1], [.3, .7, 1.5], [.7, .7, 1.4], [.5, .2, 1.5], [.2, .4, 1.3], [.8, .5, 1.2]];
+  const CR = [[.5, .3, 1.2],
+  [.3, .5, 1.4],
+  [.7, .4, 1.3],
+  [.5, .7, 1.5],
+  [.4, .3, 1.6],
+  [.6, .6, 1.3],
+  [.5, .5, 1.1],
+  [.3, .7, 1.5],
+  [.7, .7, 1.4],
+  [.5, .2, 1.5],
+  [.2, .4, 1.3],
+  [.8, .5, 1.2]];
+  
   const CATS = [], ALL = [];
   Object.values(MENU).forEach(g => g.items.forEach(([name, img, styles]) => {
     const [base, sizes, noun] = META[name], s = slug(name);
