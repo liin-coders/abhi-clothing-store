@@ -1,0 +1,56 @@
+ABHI CLOTHING STORE - WEBSITE KAISE BADLEIN (bina coding ke)
+============================================================
+
+Roz ke badlav sirf 3 file se hote hain: products.js, settings.js, faqs.js
+(aur photos "images" folder me). Baaki kisi file ko mat chhedna.
+File Notepad ya VS Code me kholo, badlav karo, SAVE karo, phir website refresh karo.
+
+1) PRODUCTS BADALNA / JODNA / HATANA  ->  products.js
+   - Daam badalna : us product ke aage wala price aur mrp ka number badlo.
+   - Naya product : kisi product ka poora block { ... }, copy karke usi category
+                    ke neeche paste karo, phir naam, daam, sizes, photo badlo.
+   - Hatana       : us product ka poora block { ... }, (comma samet) delete karo.
+   - Home page ke "Just Landed" slider ke naye products : file ke neeche
+     "window.LATEST" wale hisse me hain (About page par bhi yahi slider dikhta hai).
+   - Home page par har category ka PEHLA product dikhta hai.
+
+2) PHOTO LAGANA  ->  "images" folder
+   - Photo ko images folder me rakho (naam chhota, bina space ke).
+   - products.js me likho:  front: "images/tshirt-black-front.jpg"
+     back: "images/tshirt-black-back.jpg"
+   - Photo 4:5 shape (800 x 1000 pixel) aur 200 KB se halki ho.
+   - Banner aur About / Services ki badi photos HTML file me "https://images.unsplash.com/..."
+     wale link se aati hain. Unki jagah apni photo lagani ho to us link ko
+     "images/apni-photo.jpg" se badal do.
+
+3) DUKAAN KA TIMING / BAND HONA  ->  settings.js
+   - Roz ke time badalne ho to "hours" me badlo (24 ghante ka format: 9 baje raat = "21:00").
+   - Achanak dukaan band karni ho:  mode: "closed"   (wapis kholne par "auto")
+   - Kisi din chhutti ho:  "holidays" me us din ki tareekh likho ("2026-11-08").
+   - Website ka hara / laal dot isi se chalta hai. Time hamesha India ka hota hai.
+   - Phone par footer me chhoti line dikhti hai: "Mon - Sun: 8:00 AM - 9:00 PM" aur dot.
+
+4) SAWAAL-JAWAAB (FAQ)  ->  faqs.js
+   - Home, About aur Services page ke FAQ alag alag set me hain.
+   - Sawal badalne ke liye us line ka text badlo. Naya sawal: ek line copy-paste karo.
+   - Home ke pehle jawab me timing likhi hai, timing badlo to wahan bhi badlo.
+
+5) PAGES
+   index.html     - Home
+   about.html     - About Us
+   services.html  - Services
+   contact.html   - Contact Us (form, map, timings)
+   products.html  - Catalog (search, filter, sort)
+   Header aur footer sab pages me same hain. Footer me address / phone / email badalna ho
+   to har page me wahi line badalni padegi.
+
+6) FONT KE SIZE  ->  typography.css
+   - Saare heading, text, button aur input ke size yahin ek jagah hain (upar ke "tokens" me).
+   - Mobile par text, button aur input 16px se chhote nahi hone chahiye (iPhone me zoom hota hai).
+   - Sizes dheere dheere badhne chahiye to typography-fluid.css wali line (index.html ke head me
+     comment me rakhi hai) uncomment kar do.
+
+7) JAB KUCH GALAT DIKHE
+   - Jo file badli thi uska backup (purani copy) pehle se rakho, galti ke baad wahi wapis lagao.
+   - Aksar galti isse hoti hai: quotes " " ya comma , hat gaya. Block ko padosi block se milakar dekho.
+   - Phir bhi na chale to developer (LiinStudio) ko batao.

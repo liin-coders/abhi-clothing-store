@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Us | Abhi Clothing Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="sections.css">
+<link rel="stylesheet" href="typography.css">
+<!-- Fluid (clamp) option: uncomment the next line to use it instead of the breakpoint sizes -->
+<!-- <link rel="stylesheet" href="typography-fluid.css"> -->
+</head>
+<body data-faq="about">
+
+<!-- HEADER: logo left, mega menu navlinks centre, contact button right -->
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="logo-mark">A</span><span class="logo-text">Abhi Clothing Store</span></a>
+
+    <nav class="main-nav" aria-label="Main">
+      <ul>
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><button class="nav-link" type="button" data-menu="tops" aria-expanded="false">Tops<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg></button></li>
+        <li><button class="nav-link" type="button" data-menu="bottoms" aria-expanded="false">Bottoms<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg></button></li>
+        <li><button class="nav-link" type="button" data-menu="tailoring" aria-expanded="false">Tailoring<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg></button></li>
+        <li><a class="nav-link" href="about.html">About Us</a></li>
+        <li><a class="nav-link" href="services.html">Services</a></li>
+      </ul>
+    </nav>
+
+    <div class="head-end">
+      <a class="head-cta" href="contact.html">Contact us</a>
+      <!-- phone / tablet only: opens the whole catalog panel -->
+      <button class="nav-link shop-btn" type="button" data-menu="shop" aria-expanded="false">Shop<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 4l4 4 4-4"/></svg></button>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+        <span class="menu-btn-text">Menu</span><span class="bars"><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Dim layer behind the mega menu, then the mega menu panel (filled by script.js from the MENU data) -->
+<div class="mega-dim" id="dim"></div>
+<div class="mega" id="mega" aria-label="Shop menu"></div>
+
+<!-- FULLSCREEN MENU (phone / tablet) -->
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="menu-top">
+    <a href="index.html" class="logo"><span class="logo-mark">A</span><span class="logo-text">Abhi Clothing Store</span></a>
+    <button class="menu-x" type="button" aria-label="Close menu"><span class="menu-btn-text">Close</span><span class="bars"><i></i><i></i></span></button>
+  </div>
+  <div class="menu-body">
+    <nav class="menu-nav" aria-label="Menu">
+      <ul>
+        <li style="--i:0"><a href="index.html"><span class="thumb"><img data-img="photo-1441984904996-e0b6ba687e04" alt=""></span>Home</a></li>
+        <li style="--i:1"><a href="about.html"><span class="thumb"><img data-img="photo-1556905055-8f358a7a47b2" alt=""></span>About Us</a></li>
+        <li style="--i:2"><a href="products.html"><span class="thumb"><img data-img="photo-1490481651871-ab68de25d43d" alt=""></span>Product Catalog</a></li>
+        <li style="--i:3"><a href="services.html"><span class="thumb"><img data-img="photo-1507679799987-c73779587ccf" alt=""></span>Services</a></li>
+        <li style="--i:4"><a href="contact.html"><span class="thumb"><img data-img="photo-1489987707025-afc232f7ea0f" alt=""></span>Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="menu-foot">
+    <a href="tel:+918146035145">+91 81460 35145</a>
+    <!-- TODO: client ki email aane par replace karni hai -->
+    <a href="mailto:liincoders@gmail.com">liincoders@gmail.com</a>
+  </div>
+</div>
+<main>
+  <section class="page-h tall">
+    <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1800&q=70" alt="">
+    <div class="sec-in">
+      <p class="crumb"><a href="index.html">Home</a> / <span>About Us</span></p>
+      <h1>About <span>Abhi Clothing Store</span></h1>
+      <p class="lead">A neighbourhood menswear store where everyday wear, formals and wedding looks come together, with a tailor on hand for the perfect fit.</p>
+      <a class="btn btn-solid" href="contact.html">Visit our store</a>
+    </div>
+  </section>
+
+  <!-- Our story: big animated image + small rounded image, content on the right -->
+  <section class="sec" id="story">
+    <div class="sec-in ab">
+      <div class="ab-img">
+        <div class="ab-big"><img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=900&q=70" alt="Inside Abhi Clothing Store" loading="lazy"></div>
+        <div class="ab-small"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=500&q=70" alt="Tailored blazer" loading="lazy"></div>
+      </div>
+      <div class="ab-txt">
+        <h2>Menswear That Fits <span>Your Life</span></h2>
+        <p>Abhi Clothing Store is a neighbourhood menswear store in Narot Jaimal Singh. We bring everyday essentials, smart formals and wedding wear together, so you can find everything you need in a single visit.</p>
+        <p>Our team picks fabrics and fits with care, and our in-house tailor can stitch or alter any outfit, so what you wear always feels made for you.</p>
+        <ul class="ticks"><li>Fabrics checked for quality and comfort</li><li>Custom tailoring and quick alterations</li><li>Honest prices and friendly advice</li></ul>
+        <a class="btn btn-dark" href="products.html">Explore the catalog</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="arrivals">
+    <div class="sec-in">
+      <div class="sec-head">
+        <div><h2>Just <span>Landed</span></h2><p>This week's new arrivals, picked fresh for you.</p></div>
+        <div class="s-arrows">
+          <button class="s-arrow s-prev" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="s-arrow s-next" type="button" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="track"></div>
+    </div>
+  </section>
+
+  <!-- About us: why customers choose us -->
+  <section class="sec sand" id="why">
+    <div class="sec-in">
+      <div class="sec-head"><div><h2>Why Customers <span>Choose Us</span></h2><p>The little things we get right every day.</p></div></div>
+      <div class="svc-grid">
+      <article class="svc"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.3 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg></span><h3>Quality Fabrics</h3><p>Every fabric is checked for feel, finish and durability before it reaches our shelves.</p></article>
+      <article class="svc"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="8" width="20" height="8" rx="1.5"/><path d="M6 8v3M10 8v4M14 8v3M18 8v4"/></svg></span><h3>Perfect Fit</h3><p>Our in-house tailor adjusts every piece so it sits right on you, not just on the hanger.</p></article>
+      <article class="svc"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.2"/></svg></span><h3>Fair Prices</h3><p>Honest pricing with real discounts, so good menswear stays within reach.</p></article>
+      <article class="svc"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg></span><h3>Friendly Advice</h3><p>Not sure what suits you? Our team helps you choose without any pressure.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sand" id="contact">
+    <div class="sec-in">
+      <div class="sec-head"><div><h2>Contact <span>Us</span></h2><p>Visit the store, call us or send a message on WhatsApp.</p></div></div>
+      <div class="ct">
+        <div class="box">
+          
+          <div class="hours">
+            <div class="hrs-h"><h3>Opening hours</h3><span class="live" id="live"><i class="dot"></i><em></em></span></div>
+            <ul id="hrs"></ul>
+          </div>
+          <iframe class="map" title="Store location" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Narot+Jaimal+Singh,+Punjab,+India&output=embed"></iframe>
+        </div>
+        <div class="box">
+          <form id="cf" method="post" action="#contact" novalidate>
+            <h3>Send us a message</h3>
+            <div class="row2">
+              <label class="f">Name<input name="n" autocomplete="name" placeholder="Your full name"></label>
+              <label class="f">Phone<input name="p" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel-national" placeholder="10-digit mobile number"></label>
+            </div>
+            <label class="f">Email <small>(optional)</small><input name="e" type="email" autocomplete="email" placeholder="you@example.com"></label>
+            <label class="f">I am looking for<select name="s"><option value="">Select an option</option><option>Tops (T-shirts, polos, jackets)</option><option>Bottoms (denim, trousers, chinos)</option><option>Suits and blazers</option><option>Custom tailoring</option><option>Alterations</option><option>Wedding looks</option><option>Something else</option></select></label>
+            <label class="f">Message<textarea name="m" rows="4" placeholder="Tell us what you need"></textarea></label>
+            <div class="fb"><button class="btn btn-dark" type="submit">Send on WhatsApp</button><button class="btn btn-out" type="reset">Reset</button></div>
+            <p class="note" id="note" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq">
+    <div class="sec-in">
+      <div class="sec-head"><div><h2>Frequently Asked <span>Questions</span></h2></div></div>
+      <div class="faq">
+        <div class="faq-q" role="tablist"></div>
+        <div class="faq-r">
+          <ul class="info3">
+            <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><div><small>Phone</small><a href="tel:+918146035145">+91 81460 35145</a></div></li>
+            <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div><small>Email</small><a href="mailto:liincoders@gmail.com">liincoders@gmail.com</a></div></li>
+            <li><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><small>Address</small><span>Narot Jaimal Singh, Punjab, India</span></div></li>
+          </ul>
+          <div class="faq-a" role="tabpanel"></div>
+          <div class="ask">
+            <p>Still have a question? <a href="mailto:liincoders@gmail.com?subject=Question%20for%20Abhi%20Clothing%20Store">Ask a question</a></p>
+            <div class="ask-btns"><a class="btn btn-out sm" href="mailto:liincoders@gmail.com">Email us</a><a class="btn btn-out sm" href="tel:+918146035145">Call now</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- 08. MEGA FOOTER -->
+<footer class="foot">
+  <div class="foot-g">
+    <div>
+      <a href="index.html" class="logo"><span class="logo-mark">A</span><span class="logo-text">Abhi Clothing Store</span></a>
+      <p class="fd">Premium menswear for everyday and occasion wear, with custom tailoring and fitting by our in-house team. From crisp formal shirts to wedding suits, every piece is chosen for quality, comfort and a clean fit, so you walk out looking and feeling your best.</p>
+      <div class="soc"><a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.7-4.5 4.5V11H7v4h2.5v6h4v-6H16l.5-4h-3V8.8c0-.5.2-.8.8-.8z"/></svg></a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://www.snapchat.com/" target="_blank" rel="noopener" aria-label="Snapchat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c3 0 5 2.2 5 5v2.5c.6.3 1.4.4 2 .4-.3.7-1.2 1-2 1.2.4 1.5 1.5 2.5 3 3-.8.7-1.8.9-2.8 1-.2.5-.5.9-1 .9-.6 0-1.3-.3-2.1.2-.6.4-1.3 1.3-2.1 1.3s-1.5-.9-2.1-1.3c-.8-.5-1.5-.2-2.1-.2-.5 0-.8-.4-1-.9-1-.1-2-.3-2.8-1 1.5-.5 2.6-1.5 3-3-.8-.2-1.7-.5-2-1.2.6 0 1.4-.1 2-.4V7c0-2.8 2-5 5-5z"/></svg></a>
+        <a href="https://wa.me/918146035145" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#wa-p"/></svg></a></div>
+      <h4 class="acc-h">We accept</h4>
+      <div class="cards"><svg viewBox="0 0 54 36" role="img" aria-label="Visa"><rect width="54" height="36" rx="6" fill="#fff"/><text x="27" y="24" text-anchor="middle" font-family="Arial" font-weight="900" font-style="italic" font-size="16" fill="#1A1F71">VISA</text></svg>
+        <svg viewBox="0 0 54 36" role="img" aria-label="Mastercard"><rect width="54" height="36" rx="6" fill="#fff"/><circle cx="21" cy="18" r="10" fill="#EB001B"/><circle cx="33" cy="18" r="10" fill="#F79E1B"/><path d="M27 10.3a10 10 0 0 1 0 15.4 10 10 0 0 1 0-15.4z" fill="#FF5F00"/></svg>
+        <svg viewBox="0 0 54 36" role="img" aria-label="American Express"><rect width="54" height="36" rx="6" fill="#006FCF"/><text x="27" y="23" text-anchor="middle" font-family="Arial" font-weight="700" font-size="11" fill="#fff">AMEX</text></svg>
+        <svg viewBox="0 0 54 36" role="img" aria-label="RuPay"><rect width="54" height="36" rx="6" fill="#fff"/><text x="27" y="22" text-anchor="middle" font-family="Arial" font-weight="700" font-size="12"><tspan fill="#1C4A9B">Ru</tspan><tspan fill="#F26522">Pay</tspan></text></svg></div>
+      <p class="fd">Pay by cash, UPI or card at the store.</p>
+    </div>
+    <div><h4>Quick links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="products.html">Product Catalog</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    <div><h4>Catalog</h4><ul><li><a href="products.html#t-shirts">T-Shirts</a></li><li><a href="products.html#polo-shirts">Polo Shirts</a></li><li><a href="products.html#jackets">Jackets</a></li><li><a href="products.html#overcoats">Overcoats</a></li><li><a href="products.html#denim">Denim</a></li><li><a href="products.html#trousers">Trousers</a></li><li><a href="products.html#chinos">Chinos</a></li><li><a href="products.html">View all products</a></li></ul></div>
+    <div><h4 class="fh-h">Opening hours <span class="live" id="flive"><i class="dot"></i><em></em></span></h4><ul id="fhrs"></ul><p class="fh-simple" id="fsimple"></p></div>
+    <div><h4>Location and phone</h4><ul><li><a href="tel:+918146035145">+91 81460 35145</a></li><li><a href="mailto:liincoders@gmail.com">liincoders@gmail.com</a></li><li>Narot Jaimal Singh, Punjab, India</li></ul></div>
+  </div>
+  <div class="foot-b">
+    <div class="leg"><a href="#" data-legal="privacy">Privacy Policy</a><a href="#" data-legal="terms">Terms and Conditions</a></div>
+    <p class="cp"><span>&copy; <b id="yr">2026</b> Abhi Clothing Store. All rights reserved.</span> <span>Powered by <a href="https://liinstudio.netlify.app/" target="_blank" rel="noopener">LiinStudio</a></span></p>
+    <a class="totop" href="index.html">Back to top <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></a>
+  </div>
+
+</footer>
+<dialog id="legal"><button class="dx" type="button" aria-label="Close">&times;</button><h3></h3><p></p></dialog>
+
+
+<!-- Lightbox (product photos) -->
+<div class="lb" id="lb" aria-label="Product photos"><button class="lb-x" type="button" aria-label="Close">&times;</button><img class="lb-img" alt=""><div class="lb-th"></div></div>
+
+<!-- Fixed WhatsApp chat -->
+<a class="wa" href="https://wa.me/918146035145?text=Hi%20Abhi%20Clothing%20Store%2C%20I%20want%20to%20enquire." target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="wa-p" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+
+<script src="products.js"></script>
+<script src="settings.js"></script>
+<script src="faqs.js"></script>
+<script src="script.js"></script>
+<script src="sections.js"></script>
+<script src="site.js"></script>
+</body>
+</html>

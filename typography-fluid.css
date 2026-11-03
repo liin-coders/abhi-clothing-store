@@ -1,0 +1,26 @@
+/* =====================================================================
+   typography-fluid.css  -  ALTERNATIVE: fluid sizes with clamp()
+   =====================================================================
+   Kaise use karein:
+   index.html (aur baaki pages) me typography.css ke BAAD ye line jodo
+   (head me ek comment ke andar pehle se rakhi hai, bas uncomment karo):
+
+       <link rel="stylesheet" href="typography-fluid.css">
+
+   Ye file sirf sizes ke tokens badalti hai. Rules typography.css me hi
+   rehte hain. Size screen ki width ke saath dheere dheere badhta hai
+   (breakpoints par jhatka nahi lagta).
+
+   clamp(sabse chhota, beech ka, sabse bada)
+   Mobile par body/buttons/inputs 1rem (16px) se neeche nahi jaate.
+   ===================================================================== */
+:root{
+  --fs-lead:clamp(1.0625rem, 1rem + .3vw, 1.1875rem);   /* 17px -> 19px  */
+  --fs-h1:clamp(2.5rem, 1.5rem + 4.4vw, 4.75rem);       /* 40px -> 76px  */
+  --fs-h1-page:clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem);  /* 36px -> 56px  */
+  --fs-h2:clamp(1.875rem, 1.3rem + 2.4vw, 3.25rem);     /* 30px -> 52px  */
+  --fs-h3:clamp(1.25rem, 1.1rem + .6vw, 1.5rem);        /* 20px -> 24px  */
+  --fs-quote:clamp(1.25rem, 1rem + 1.1vw, 1.75rem);     /* 20px -> 28px  */
+  --fs-label:clamp(.875rem, .85rem + .1vw, .9375rem);
+  --fs-small:clamp(.875rem, .85rem + .1vw, .9375rem);
+}

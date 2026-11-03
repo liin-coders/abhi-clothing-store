@@ -36,6 +36,7 @@
   const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   window.ABHI = { MENU, IMG, slug };
   const mega = $('#mega');
+  const dim = $('#dim');
   const menu = $('#menu');
   const body = document.body;
   let openKey = null, ptr = 'mouse', activeLi = null, si = 0, timer = null;
@@ -144,12 +145,14 @@
     render(key);
     openKey = key;
     mega.classList.add('open');
+    dim.classList.add('open');
     startSlider();
     syncTriggers();
   }
   function closeMega() {
     openKey = null;
     mega.classList.remove('open');
+    dim.classList.remove('open');
     stopSlider();
     setActive(null);
     syncTriggers();
@@ -225,6 +228,8 @@
     else later();
   });
   header.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') later(); });
+  mega.addEventListener('pointerover', e => { if (e.pointerType === 'mouse') keep(); });
+  mega.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') later(); });
 
   /* ---------- fullscreen menu (phone / tablet) ---------- */
   function setMenu(open) {

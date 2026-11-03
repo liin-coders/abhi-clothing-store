@@ -6,21 +6,21 @@
     (fp ? `&crop=focalpoint&fp-x=${fp[0]}&fp-y=${fp[1]}&fp-z=${fp[2]}` : '');
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const inr = n => '₹' + n.toLocaleString('en-IN');
-  const hook = { open() { }, close() { } };
+  const hook = { open() {}, close() {} };
 
   /* ================= product card (home + products page) ================= */
   const card = (name, price, mrp, sizes, front, back, crop) => {
-    const off = Math.round((mrp - price) / mrp * 100);
+    const off = mrp > price ? Math.round((mrp - price) / mrp * 100) : 0;
     const msg = encodeURIComponent(`Hi Abhi Clothing Store, I want to enquire about ${name} (${inr(price)}).`);
     return `<article class="pcard">
       <div class="pimg" data-f="${front}" data-b="${back}" data-fb="${crop}" role="button" tabindex="0" aria-label="View ${name} photos">
-        <span class="badge">${off}% off</span>
+        ${off ? `<span class="badge">${off}% off</span>` : ''}
         <img src="${front}" alt="${name} front" loading="lazy">
         <img src="${back}" alt="${name} back" loading="lazy" onerror="this.onerror=null;this.src='${crop}'">
       </div>
       <div class="pinfo">
         <h3>${name}</h3>
-        <div class="price"><b>${inr(price)}</b><s>${inr(mrp)}</s></div>
+        <div class="price"><b>${inr(price)}</b>${off ? `<s>${inr(mrp)}</s>` : ''}</div>
         <div class="sizes">${sizes.split(' ').map(s => `<span>${s}</span>`).join('')}</div>
         <a class="btn btn-dark" href="https://wa.me/${WA}?text=${msg}" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="${WA_PATH()}"/></svg>WhatsApp enquiry</a>
@@ -90,23 +90,11 @@
   }
 
   /* ================= 02 LATEST ARRIVALS (home only) ================= */
-  // [name, price, mrp, sizes, front image id, back image id (optional)]
-  const P = [
-    ['Classic Round Neck Tee', 499, 799, 'S M L XL', 'photo-1503342217505-b0a15ec3261c', 'photo-1521572163474-6864f9cf17ab'],
-    ['Pique Polo Shirt', 799, 1299, 'S M L XL XXL', 'photo-1489987707025-afc232f7ea0f', 'photo-1576566588028-4147f3842f27'],
-    ['Urban Bomber Jacket', 2199, 3499, 'M L XL', 'photo-1591047139829-d91aecb6caea', 'photo-1551028719-00167b16eac5'],
-    ['Wool Blend Overcoat', 4499, 6999, 'M L XL', 'photo-1544022613-e87ca75a784a'],
-    ['Slim Fit Denim', 1299, 1999, '30 32 34 36', 'photo-1542272604-787c3835535d', 'photo-1541099649105-f69ad21f3246'],
-    ['Stretch Chinos', 999, 1599, '30 32 34 36', 'photo-1560243563-062bfc001d68'],
-    ['Two Piece Suit', 5999, 8999, '38 40 42 44', 'photo-1507679799987-c73779587ccf', 'photo-1593030761757-71fae45fa0e7'],
-    ['Navy Blazer', 3499, 5499, '38 40 42 44', 'photo-1594938298603-c8148c4dae35', 'photo-1617137968427-85924c800a22']
-  ];
-  const BACK_CROP = [.5, .8, 2];
   const sec = $('#arrivals');
   if (sec) {
     const track = $('.track', sec);
-    track.innerHTML = P.map(([name, price, mrp, sizes, f, b]) =>
-      card(name, price, mrp, sizes, IMG(f), b ? IMG(b) : IMG(f, 700, BACK_CROP), IMG(f, 700, BACK_CROP))).join('');
+    // naye products products.js ke LATEST se aate hain
+    track.innerHTML = (window.LATEST || []).map(p => card(p.name, +p.price, +p.mrp || +p.price, p.sizes, p.front, p.back || p.front, p.front)).join('');
     const w = () => track.children[0].offsetWidth + 20;
     const step = () => {
       if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 4) track.scrollTo({ left: 0, behavior: 'smooth' });

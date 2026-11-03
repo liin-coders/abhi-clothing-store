@@ -1,0 +1,4 @@
+Is folder (images) me apne products ki photos rakho.
+Photo ka naam chhota aur bina space ke rakho, jaise:  tshirt-black-front.jpg
+Phir products.js me likho:  front: "images/tshirt-black-front.jpg"
+Photo seedhi (4:5 shape, jaise 800 x 1000 pixel) aur 200 KB se halki ho.
